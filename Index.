@@ -1,377 +1,312 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thái Triêk Việt Hoàng - AI Engineer Portfolio</title>
-    
+    <title>Thái Triêk Việt Hoàng - AI Student Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        fpt: '#F36F21', // Màu cam FPT
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        accent: '#38bdf8'
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Custom Animations */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .animate-blob {
-            animation: blob 7s infinite;
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
         }
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-            animation-delay: 4s;
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 4px;
         }
         
-        /* Selection Color */
-        ::selection {
-            background-color: #f97316; /* orange-500 */
-            color: white;
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-white font-sans overflow-x-hidden relative">
+<body class="bg-dark text-slate-300 font-sans selection:bg-accent selection:text-white overflow-x-hidden">
 
     <!-- Background Elements -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] animate-pulse"></div>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/3 w-96 h-96 bg-fpt rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold flex items-center gap-2 cursor-pointer" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})">
-                <i data-lucide="cpu" class="text-orange-500"></i>
-                <span>Việt<span class="text-orange-500">Hoàng</span>.AI</span>
+    <nav class="fixed w-full z-50 glass border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-2xl tracking-wider text-white">
+                    HOANG<span class="text-fpt">.AI</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Trang chủ</a>
+                        <a href="#about" class="hover:text-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Về tôi</a>
+                        <a href="#skills" class="hover:text-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Kỹ năng</a>
+                        <a href="#contact" class="bg-fpt hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-orange-500/30">Liên hệ</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#home" class="nav-link text-orange-500 hover:text-orange-500 transition-colors uppercase tracking-wider" data-section="home">Trang chủ</a>
-                <a href="#about" class="nav-link text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-wider" data-section="about">Giới thiệu</a>
-                <a href="#video" class="nav-link text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-wider" data-section="video">Hoạt động</a>
-                <a href="#skills" class="nav-link text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-wider" data-section="skills">Kỹ năng</a>
-                <a href="#contact" class="nav-link text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-wider" data-section="contact">Liên hệ</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button class="text-white hover:text-orange-500">
-                    <i data-lucide="chevron-down"></i>
-                </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden glass" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Trang chủ</a>
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Về tôi</a>
+                <a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Kỹ năng</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 z-10 order-2 md:order-1">
-                <div class="inline-block px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold tracking-wide mb-2">
-                    Sinh viên FPT Polytechnic Tây Nguyên
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
-                    Xin chào, tôi là <br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
-                        Việt Hoàng
-                    </span>
-                </h1>
-                <p class="text-xl text-slate-400 max-w-lg">
-                    Đam mê với <strong class="text-white">Công Nghệ Trí Tuệ Nhân Tạo (AI)</strong>. 
-                    Tôi khao khát xây dựng những giải pháp thông minh để giải quyết các vấn đề thực tế.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#contact" class="px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg shadow-orange-500/25 flex items-center gap-2">
-                        <i data-lucide="mail" width="18"></i> Liên hệ ngay
-                    </a>
-                    <a href="#about" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg font-medium transition-all flex items-center gap-2">
-                        <i data-lucide="user" width="18"></i> Xem hồ sơ
-                    </a>
-                </div>
-            </div>
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+                <!-- Text Content -->
+                <div class="flex-1 text-center lg:text-left space-y-6">
+                    <div class="inline-block px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-accent text-sm font-semibold mb-2">
+                        <i class="fas fa-robot mr-2"></i> Artificial Intelligence Student
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                        Xin chào, tôi là <br/>
+                        <span class="text-gradient">Thái Triêk Việt Hoàng</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                        Sinh viên chuyên ngành Công Nghệ Trí Tuệ Nhân Tạo tại FPT Polytechnic. Đam mê khám phá dữ liệu và xây dựng các giải pháp thông minh cho tương lai.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8">
+                        <a href="#contact" class="px-8 py-3 rounded-full bg-accent hover:bg-sky-600 text-slate-900 font-bold transition-all shadow-lg shadow-sky-500/30 w-full sm:w-auto text-center">
+                            Kết nối ngay
+                        </a>
+                        <a href="#about" class="px-8 py-3 rounded-full border border-slate-600 hover:border-accent hover:text-accent transition-all w-full sm:w-auto text-center">
+                            Tìm hiểu thêm
+                        </a>
+                    </div>
 
-            <div class="relative z-10 flex justify-center order-1 md:order-2">
-                <div class="relative w-72 h-72 md:w-96 md:h-96 group">
-                    <!-- Decorative rings -->
-                    <div class="absolute inset-0 rounded-full border-2 border-orange-500/30 md:scale-110 animate-[spin_10s_linear_infinite]"></div>
-                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-slate-600 md:scale-125 animate-[spin_15s_linear_infinite_reverse]"></div>
-                    
-                    <!-- Profile Image -->
-                    <div class="w-full h-full rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl relative z-20">
-                        <img 
-                            src="PK04665.jpg" 
-                            alt="Thái Triêk Việt Hoàng" 
-                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
-                            onerror="this.src='https://via.placeholder.com/400x400?text=Viet+Hoang'"
-                        />
+                    <div class="flex items-center justify-center lg:justify-start gap-6 mt-8 text-slate-400">
+                        <a href="#" class="hover:text-white transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                        <a href="#" class="hover:text-blue-500 transition-colors text-2xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-pink-500 transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-sky-600 transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
                     </div>
-                    
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-4 right-0 md:right-4 bg-slate-900 border border-slate-700 p-4 rounded-xl shadow-xl flex items-center gap-3 z-30 animate-bounce">
-                        <div class="bg-orange-500 p-2 rounded-lg text-white">
-                            <i data-lucide="brain-circuit" width="24"></i>
+                </div>
+
+                <!-- Image/Avatar -->
+                <div class="flex-1 flex justify-center lg:justify-end relative">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96 animate-float">
+                        <!-- Decorative Rings -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-slate-700 animate-[spin_10s_linear_infinite]"></div>
+                        <div class="absolute -inset-4 rounded-full border border-slate-800 animate-[spin_15s_linear_infinite_reverse]"></div>
+                        
+                        <!-- Main Image Container -->
+                        <div class="absolute inset-2 rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl shadow-accent/20">
+                            <!-- Image Fallback logic included -->
+                            <img src="PK04665.jpg" 
+                                 alt="Thái Triêk Việt Hoàng" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Viet+Hoang&background=0D8ABC&color=fff&size=512';">
                         </div>
-                        <div>
-                            <p class="text-xs text-slate-400">Chuyên ngành</p>
-                            <p class="font-bold text-orange-400">AI Engineer</p>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-4 -left-4 glass px-4 py-2 rounded-lg shadow-lg flex items-center gap-3 animate-bounce">
+                            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm font-semibold text-white">Open to work</span>
+                        </div>
+                        
+                        <!-- Tech Badge -->
+                        <div class="absolute top-4 -right-4 bg-slate-800 p-3 rounded-full border border-slate-700 shadow-lg">
+                            <i class="fas fa-brain text-fpt text-2xl"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-            <i data-lucide="chevron-down" width="32"></i>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-slate-900/50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/2">
-                   <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
-                    <span class="w-12 h-1 bg-orange-500 block"></span>
-                    Thông Tin Cá Nhân
-                  </h2>
-                  <div class="space-y-6 text-lg text-slate-300">
-                    <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-orange-500/50 transition-colors">
-                      <ul class="space-y-4">
-                        <li class="flex items-start gap-4">
-                          <i data-lucide="user" class="text-orange-500 shrink-0 mt-1"></i>
-                          <div>
-                            <span class="block text-sm text-slate-500">Họ và tên</span>
-                            <strong class="text-xl text-white">Thái Triêk Việt Hoàng</strong>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                          <i data-lucide="graduation-cap" class="text-orange-500 shrink-0 mt-1"></i>
-                          <div>
-                            <span class="block text-sm text-slate-500">Mã số sinh viên</span>
-                            <span class="text-white font-mono bg-slate-900 px-2 py-1 rounded border border-slate-700">PK04665</span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                          <i data-lucide="map-pin" class="text-orange-500 shrink-0 mt-1"></i>
-                          <div>
-                            <span class="block text-sm text-slate-500">Quê quán</span>
-                            <span class="text-white">Buôn Yốk Đuôn, xã Liên Sơn, Huyện Lắk, Tỉnh Đắk Lắk</span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                          <i data-lucide="external-link" class="text-orange-500 shrink-0 mt-1"></i>
-                          <div>
-                            <span class="block text-sm text-slate-500">Trường đang theo học</span>
-                            <span class="text-white">FPT Polytechnic Tây Nguyên</span>
-                          </div>
-                        </li>
-                      </ul>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Thông Tin <span class="text-fpt">Cá Nhân</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-fpt to-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Location -->
+                <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center text-accent text-2xl mb-6 group-hover:bg-accent group-hover:text-slate-900 transition-colors">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                  </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Quê Quán</h3>
+                    <p class="text-slate-400">
+                        Buôn Yốk Đuôn, Xã Liên Sơn<br>
+                        Huyện Lắk, Tỉnh Đắk Lắk
+                    </p>
+                </div>
+
+                <!-- Card 2: Education -->
+                <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group border-fpt/30 border">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center text-fpt text-2xl mb-6 group-hover:bg-fpt group-hover:text-white transition-colors">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Học Vấn</h3>
+                    <p class="text-slate-400 mb-2 font-semibold text-white">FPT Polytechnic Tây Nguyên</p>
+                    <p class="text-slate-400 text-sm">Chuyên ngành: Công Nghệ AI</p>
+                </div>
+
+                <!-- Card 3: Student ID -->
+                <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-400 group-hover:text-slate-900 transition-colors">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Thông Tin Sinh Viên</h3>
+                    <p class="text-slate-400">Mã số SV: <span class="text-white font-mono bg-slate-800 px-2 py-1 rounded">PK04665</span></p>
+                    <p class="text-slate-400 mt-2 text-sm">Niên khóa: 2024 - 2026 (Dự kiến)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (Demo for AI Student) -->
+    <section id="skills" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Kỹ Năng & <span class="text-accent">Công Nghệ</span></h2>
+                <p class="text-slate-400">Những công cụ tôi đang học tập và rèn luyện</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Python -->
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-yellow-400 transition-colors text-center group">
+                    <i class="fab fa-python text-4xl text-yellow-400 mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-semibold text-white">Python</h3>
+                    <div class="w-full bg-slate-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                        <div class="bg-yellow-400 h-full w-[70%]"></div>
+                    </div>
                 </div>
                 
-                <div class="md:w-1/2 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4 text-white">Mục tiêu nghề nghiệp</h3>
-                  <p class="text-slate-400 leading-relaxed mb-6">
-                    Là một sinh viên chuyên ngành Công nghệ Trí tuệ nhân tạo (AI), tôi luôn khao khát tìm tòi và học hỏi những công nghệ mới nhất. Mục tiêu của tôi là trở thành một Kỹ sư AI chuyên nghiệp, góp phần đưa các ứng dụng thông minh vào đời sống, đặc biệt là trong việc phát triển quê hương Đắk Lắk.
-                  </p>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 text-center">
-                      <span class="text-3xl font-bold text-orange-500 block mb-1">AI</span>
-                      <span class="text-sm text-slate-400">Machine Learning</span>
-                    </div>
-                    <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 text-center">
-                      <span class="text-3xl font-bold text-blue-500 block mb-1">Data</span>
-                      <span class="text-sm text-slate-400">Big Data Analysis</span>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video / Creative Section -->
-    <section id="video" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-orange-600/5 z-0"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tài Năng & Phong Cách</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Bên cạnh những dòng code khô khan, tôi còn có niềm đam mê với nghệ thuật. 
-                    Đây là một phần con người tôi.
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="relative group rounded-2xl overflow-hidden border-2 border-slate-700 shadow-[0_0_50px_rgba(234,88,12,0.3)] bg-black">
-                    <!-- Browser-like Header for Video -->
-                    <div class="h-10 bg-slate-800 flex items-center px-4 gap-2 border-b border-slate-700">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <div class="ml-4 px-3 py-1 bg-slate-900 rounded-md text-xs text-slate-400 flex-1 text-center font-mono">
-                            featured_performance.mp4
-                        </div>
-                    </div>
-                    
-                    <!-- Video Player -->
-                    <div class="aspect-video w-full bg-slate-900 relative">
-                        <video 
-                            class="w-full h-full object-contain"
-                            controls
-                            poster="PK04665.jpg"
-                        >
-                            <source src="1127 (1).mp4" type="video/mp4" />
-                            Trình duyệt của bạn không hỗ trợ thẻ video.
-                        </video>
-                    </div>
-                </div>
-                <div class="mt-6 flex justify-center gap-4">
-                   <div class="px-4 py-2 bg-slate-800 rounded-full text-sm text-orange-400 border border-orange-500/20">
-                     #FPT_Polytechnic
-                   </div>
-                   <div class="px-4 py-2 bg-slate-800 rounded-full text-sm text-blue-400 border border-blue-500/20">
-                     #SinhVienTaiNang
-                   </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-slate-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center text-white">Kỹ Năng Chuyên Môn</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Skill Card 1 -->
-                <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition-all hover:transform hover:-translate-y-2 group">
-                    <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center mb-6 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                        <i data-lucide="code" width="32"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Lập trình cơ bản</h3>
-                    <p class="text-slate-400 mb-4 text-sm">Nền tảng vững chắc với các ngôn ngữ lập trình phổ biến trong ngành khoa học máy tính.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Python</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">C++</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Java</span>
+                <!-- Machine Learning -->
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-blue-500 transition-colors text-center group">
+                    <i class="fas fa-brain text-4xl text-blue-500 mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-semibold text-white">Machine Learning</h3>
+                    <div class="w-full bg-slate-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full w-[50%]"></div>
                     </div>
                 </div>
 
-                <!-- Skill Card 2 -->
-                <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition-all hover:transform hover:-translate-y-2 group">
-                    <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center mb-6 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <i data-lucide="brain-circuit" width="32"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Trí tuệ nhân tạo</h3>
-                    <p class="text-slate-400 mb-4 text-sm">Nghiên cứu và ứng dụng các thuật toán học máy và xử lý dữ liệu.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Machine Learning</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Deep Learning</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">NLP</span>
+                <!-- Data Analysis -->
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-green-500 transition-colors text-center group">
+                    <i class="fas fa-chart-bar text-4xl text-green-500 mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-semibold text-white">Data Analysis</h3>
+                    <div class="w-full bg-slate-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                        <div class="bg-green-500 h-full w-[60%]"></div>
                     </div>
                 </div>
 
-                <!-- Skill Card 3 -->
-                <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition-all hover:transform hover:-translate-y-2 group">
-                    <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center mb-6 text-purple-500 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                        <i data-lucide="graduation-cap" width="32"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Kỹ năng mềm</h3>
-                    <p class="text-slate-400 mb-4 text-sm">Rèn luyện tại môi trường năng động của FPT Polytechnic.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Làm việc nhóm</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Thuyết trình</span>
-                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Tiếng Anh</span>
+                <!-- Soft Skills -->
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-fpt transition-colors text-center group">
+                    <i class="fas fa-users text-4xl text-fpt mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-semibold text-white">Teamwork</h3>
+                    <div class="w-full bg-slate-700 h-1.5 mt-3 rounded-full overflow-hidden">
+                        <div class="bg-fpt h-full w-[85%]"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-black py-12 border-t border-slate-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">Liên hệ với tôi</h2>
-            <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-                Nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác trong các dự án về AI, đừng ngần ngại liên hệ.
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-                <a href="mailto:hoangttvpk04665@fpt.edu.vn" class="flex items-center gap-2 px-6 py-3 bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors border border-slate-800">
-                    <i data-lucide="mail" class="text-orange-500" width="20"></i>
-                    <span>hoangttvpk04665@fpt.edu.vn</span>
-                </a>
-                <div class="flex items-center gap-2 px-6 py-3 bg-slate-900 rounded-lg border border-slate-800">
-                    <i data-lucide="map-pin" class="text-orange-500" width="20"></i>
-                    <span>Đắk Lắk, Việt Nam</span>
+    <!-- Footer -->
+    <footer id="contact" class="border-t border-slate-800 bg-slate-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-white mb-2">Thái Triêk Việt Hoàng</h3>
+                    <p class="text-slate-400">Sinh viên FPT Polytechnic Tây Nguyên</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="mailto:contact@example.com" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-fpt transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-slate-700 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
-
-            <div class="flex justify-center gap-6 mb-8">
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
-                    <i data-lucide="facebook" width="20"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gray-700 hover:text-white transition-all">
-                    <i data-lucide="github" width="20"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all">
-                    <i data-lucide="linkedin" width="20"></i>
-                </a>
-            </div>
-
-            <div class="text-slate-600 text-sm">
-                <p>&copy; 2024 Thái Triêk Việt Hoàng - PK04665. FPT Polytechnic Tây Nguyên.</p>
-                <p class="mt-2">Designed with HTML & Tailwind CSS.</p>
+            <div class="text-center pt-8 border-t border-slate-800 text-slate-500 text-sm">
+                <p>&copy; 2024 PK04665 - Thái Triêk Việt Hoàng. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
-                navbar.classList.add('bg-transparent');
-            }
-        });
-
-        // Highlight active menu item on scroll
-        const sections = document.querySelectorAll('section, footer');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-orange-500');
-                link.classList.add('text-slate-400');
-                if (link.getAttribute('data-section') === current) {
-                    link.classList.remove('text-slate-400');
-                    link.classList.add('text-orange-500');
-                }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
